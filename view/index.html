@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+  html,body{height:100%;margin:0px;}
+  .bird{
+    position: relative;
+    /* background: url('../img/bird.png') no-repeat 0px 0px */
+  }
+  .bird2{
+    position: absolute;
+    width: 33px;
+    height: 30px;
+    left: 0px;
+    top: 0px;
+    overflow: hidden; 
+  }
+  img{
+    position: absolute;
+    width:100px;
+    height:30px;
+    left: 0px;
+    top: 0px;
+  }
+</style>
+<body>
+  <div id="divFly" class="bird">
+    <div class="bird2" id="flying">
+      <img id="img" src="../img/bird.png" />
+    </div>
+  </div> 
+  <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script>
+  var time = setInterval("flyBird()",200)
+  $("body").click(function(){
+    var intX = window.event.clientX + 'px';
+    var intY = window.event.clientY + 'px';
+    $("#divFly").animate({left:intX,top:intY});
+  });
+
+function flyBird () {
+  var img = document.getElementById("img");
+  if(img.style.left === '-33px'){
+    img.style.left = '-' + 66 + 'px';
+  }
+  else if(img.style.left === '-66px'){
+    img.style.left = 0 + 'px';
+  }
+  else{
+    img.style.left ='-' + 33 + 'px';
+  }
+}
+  </script>
+</body>
+</html>
